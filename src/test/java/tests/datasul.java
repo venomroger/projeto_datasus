@@ -68,18 +68,18 @@ public class datasul {
 
         //Paginaçao resultado pesquisa INICIO
         List<WebElement> paginacaolista = browser.findElements(By.xpath("//ul[@ng-if='pages.length']/li/a"));
-        //System.out.println(paginacaolista.size());
+        System.out.println(paginacaolista.size());
         String numeropaginas = "1";
         if(Integer.parseInt(String.valueOf(paginacaolista.size()))>0){
             numeropaginas = browser.findElement(By.xpath("(//ul[@ng-if='pages.length']/li/a)["+(paginacaolista.size()-1)+"]")).getText();
         }
-        //System.out.println(numeropaginas);
+        System.out.println(numeropaginas);
         List<Data> listadata = new ArrayList<Data>();
 
         for(int i=1; i<=Integer.parseInt(numeropaginas); i++){
 
             if(i>=2){
-                //System.out.println("Pagina: "+ i );
+                System.out.println("Pagina: "+ i );
                 WebElement nextPageButton = browser.findElement(By.xpath("(//ul[@ng-if='pages.length']/li/a)["+(paginacaolista.size())+"]"));
                 ((JavascriptExecutor) browser).executeScript("arguments[0].scrollIntoView(true);", nextPageButton);
                 Thread.sleep(500);
